@@ -94,7 +94,7 @@ ChatGPTTelegramBot.on('message', (msg) => {
           updateConv();
           console.log(msg.chat.id, " got banned");
           //ChatGPTTelegramBot.sendMessage(Number(userID), 'You have been banned, for more info contact ' + adminUsername + '.');
-          ChatGPTTelegramBot.sendMessage(adminChatId, 'You have banned ' + userID);
+          ChatGPTTelegramBot.sendMessage(adminChatId, 'You have banned ' + userID,  { parse_mode: 'Markdown' });
         }
         
       }
@@ -105,7 +105,7 @@ ChatGPTTelegramBot.on('message', (msg) => {
       let uid = userID.slice(0, indexOfSeparator2);
       let msgCont = userID.slice(indexOfSeparator2+1);
       ChatGPTTelegramBot.sendMessage(Number(uid), msgCont);
-      ChatGPTTelegramBot.sendMessage(adminChatId, 'You sent a message to ' + uid + ' | ' + msgCont);
+      ChatGPTTelegramBot.sendMessage(adminChatId, 'You sent a message to ' + uid + ' | ' + msgCont,  { parse_mode: 'Markdown' });
       console.log(msg.chat.id, " messaged by admin | " + msgCont);
       
     }
@@ -138,7 +138,7 @@ ChatGPTTelegramBot.on('message', (msg) => {
       });
 
       conversations = conversationsTemp;
-      ChatGPTTelegramBot.sendMessage(adminChatId, '```All Conversations Cleared, Prev Length: ' + prevLength + ', Current Length: '+ conversations.length + '```');
+      ChatGPTTelegramBot.sendMessage(adminChatId, '```All Conversations Cleared, Prev Length: ' + prevLength + ', Current Length: '+ conversations.length + '```',  { parse_mode: 'Markdown' });
     }
 
   } else {
@@ -260,7 +260,7 @@ async function send(msg, bot, isGroup){
       ssdoii = "``` re:" + ssdoii +  " :``` ";
       
       if (!isGroup) {
-        bot.sendMessage(adminChatId,  ssdoii + answer);  
+        bot.sendMessage(adminChatId,  ssdoii + answer,  { parse_mode: 'Markdown' });  
         console.log("Responded to: ", msg.chat.id, " ( Tokens: ", tk ,") : ", answer);
         updateConv();
       }
@@ -347,7 +347,7 @@ function notifyAdmin(msg, bot){
           msgAdminContent += '[x](tg://user?id=' + msg.chat.id + ':';
         }
         
-        bot.sendMessage(adminChatId, msgAdminContent + "\n" + msg.text);
+        bot.sendMessage(adminChatId, msgAdminContent + "\n" + msg.text,  { parse_mode: 'Markdown' });
         msgAdminContent = msgAdminContent.replace('(tg://user?id=' + msg.chat.id +')','');
         console.log("\n", msgAdminContent + "\t\t" + msg.text);
 }
@@ -383,7 +383,7 @@ function notifyAdminPhoto(msg, bot){
         } else {
           msgAdminContent += '[x](tg://user?id=' + msg.chat.id + ':';
         }
-        bot.sendMessage(adminChatId, msgAdminContent + ": Sent a Photo");
+        bot.sendMessage(adminChatId, msgAdminContent + ": Sent a Photo",  { parse_mode: 'Markdown' });
         if (msg.photo[2].file_id != undefined) {
           try {
              bot.sendPhoto(adminChatId, msg.photo[2].file_id);
