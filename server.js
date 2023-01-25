@@ -119,6 +119,15 @@ ChatGPTTelegramBot.on('message', (msg) => {
       });
     }
 
+    if(command == 'all'){
+      let message = userID;
+      conversations.forEach(cnv => {
+        ChatGPTTelegramBot.sendMessage(cnv.chatID, message);
+        cnv.tokens += 5;
+        console.log(cnv.chatID, ' has been messaged by Admin: ', message);
+      });
+    }
+
     if(command == 'clear'){
       const prevLength = conversations.length;
       console.log('Clearing conversations: ' + prevLength);

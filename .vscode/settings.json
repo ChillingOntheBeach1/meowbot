@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/16fef22b-a348-41a2-8f02-832901afff5f/AppServices/subscriptions/16fef22b-a348-41a2-8f02-832901afff5f/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/meowbot",
+    "appService.deploySubpath": "."
+}
