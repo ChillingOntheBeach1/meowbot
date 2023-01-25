@@ -9,7 +9,7 @@ You can try it with messaging [MeowBot](https://t.me/oaichatgptbot) on telegram.
 To install MeowBot, follow these steps:
  1.  Clone this repository to your local system:
 
-    git clone https://github.com/dinoelhadj/meowbot.git
+    git clone https://github.com/elhadjx/meowbot.git
 
  2.  Navigate to the root directory of the repository:
 
